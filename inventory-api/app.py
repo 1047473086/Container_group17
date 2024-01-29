@@ -27,19 +27,13 @@ class Book(db.Model):
 
 @app.route('/inventory/api/v1.0/books', methods=['GET'])
 def get_books():
-    genre = request.args.get('genre')
-    min_quantity = request.args.get('min_quantity', type=int)
+   # Retrieve books from the database
+    database_books = Book.query.all()
 
-    query = Book.query
-    if genre:
-        query = query.filter_by(genre=genre)
-    if min_quantity is not None:
-        query = query.filter(Book.quantity >= min_quantity)
+    # Convert database results to a list of dictionaries
+    result_books = [{'title': book.title, 'author': book.author, 'genre':book.genre,'quantity': book.quantity} for book in database_books]
 
-    books = query.all()
-    result_books = [{'title': book.title, 'author': book.author, 'genre': book.genre, 'quantity': book.quantity} for book in books]
     return jsonify({'books': result_books})
-
 
 
 class Role(db.Model):
