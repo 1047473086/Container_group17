@@ -13,7 +13,7 @@ books = [
     {'title': 'Great Expectations', 'author': 'Charles Dickens', 'genre': 'Bildungsroman', 'quantity': 5},
     {'title': 'War and Peace', 'author': 'Leo Tolstoy', 'genre': 'Historical Fiction', 'quantity': 2}
 ]
-roles = ['manager', 'staff', 'customer']
+#roles = ['manager', 'staff', 'customer']
 users = [
     {'username': 'manager_user', 'password': 'manager_pass', 'role': 'manager'},
     {'username': 'staff_user1', 'password': 'staff_pass1', 'role': 'staff'},
