@@ -33,11 +33,11 @@ def populate_database():
         db.create_all()
 
         # Add roles
-        for role_name in ['manager', 'staff', 'customer']:
-            if not Role.query.filter_by(name=role_name).first():
-                role = Role(name=role_name)
-                db.session.add(role)
-        db.session.commit()
+        # for role_name in ['manager', 'staff', 'customer']:
+        #     if not Role.query.filter_by(name=role_name).first():
+        #         role = Role(name=role_name)
+        #         db.session.add(role)
+        # db.session.commit()
 
         # Add users
         for user_data in users:
