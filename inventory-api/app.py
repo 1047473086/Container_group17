@@ -36,9 +36,9 @@ def get_books():
     return jsonify({'books': result_books})
 
 
-class Role(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True)
+# class Role(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(80), unique=True)
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
