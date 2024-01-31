@@ -13,6 +13,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@postgres
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SERVER_NAME'] = 'localhost:5000'
 
+app.config['SECRET_KEY'] = 'asdfghjk' 
+
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
