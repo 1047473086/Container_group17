@@ -46,8 +46,9 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
-    role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
-    role = db.relationship('Role', backref=db.backref('users', lazy=True))
+    role = db.Column(db.String(100))
+    #role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
+    #role = db.relationship('Role', backref=db.backref('users', lazy=True))
 
 # Flask-Login setup
 from flask_login import LoginManager

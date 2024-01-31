@@ -1,4 +1,4 @@
-from app import app, db, Book, User, Role
+from app import app, db, Book, User
 from werkzeug.security import generate_password_hash
 # Sample data
 books = [
@@ -42,8 +42,8 @@ def populate_database():
         # Add users
         for user_data in users:
             if not User.query.filter_by(username=user_data['username']).first():
-                role = Role.query.filter_by(name=user_data['role']).first()
-                user = User(username=user_data['username'], password=user_data['password'], role=role)
+                #role = Role.query.filter_by(name=user_data['role']).first()
+                user = User(username=user_data['username'], password=user_data['password'], role=user_data['role'])
                 db.session.add(user)
         db.session.commit()
 
