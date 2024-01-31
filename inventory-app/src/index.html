@@ -1,13 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>InventoryApp</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Inventory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <app-root></app-root>
+<body class="bg-gray-100">
+
+    <!-- Login Page -->
+    <div id="loginPage" class="hidden">
+        <h1 class="text-center text-3xl font-bold">Login</h1>
+        <form id="loginForm" class="max-w-sm mx-auto mt-6">
+            <input type="text" id="username" placeholder="Username" class="w-full p-2 border border-gray-300 rounded mb-2">
+            <input type="password" id="password" placeholder="Password" class="w-full p-2 border border-gray-300 rounded mb-4">
+            <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
+        </form>
+    </div>
+
+    <!-- Inventory Management Page -->
+    <div id="inventoryPage" class="hidden">
+        <div class="flex justify-between items-center p-4">
+            <h1 class="text-2xl font-bold">Book Inventory</h1>
+            <button id="logoutButton" class="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
+        </div>
+        <div class="max-w-4xl mx-auto">
+            <div id="bookTable" class="bg-white shadow-md rounded my-6"></div>
+            <!-- Add/Update Book Form (Visible to Managers) -->
+            <div id="bookForm" class="hidden">
+                <h2 class="text-xl font-bold mb-4">Add/Update Book</h2>
+                <form id="manageBookForm">
+                    <input type="text" id="bookTitle" placeholder="Title" class="w-full p-2 border border-gray-300 rounded mb-2">
+                    <input type="text" id="bookAuthor" placeholder="Author" class="w-full p-2 border border-gray-300 rounded mb-2">
+                    <input type="text" id="bookGenre" placeholder="Genre" class="w-full p-2 border border-gray-300 rounded mb-2">
+                    <input type="number" id="bookQuantity" placeholder="Quantity" class="w-full p-2 border border-gray-300 rounded mb-4">
+                    <button type="submit" class="w-full bg-green-500 text-white p-2 rounded">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
