@@ -19,8 +19,8 @@ def populate_database():
     # Connect to the PostgreSQL database using SQLAlchemy
     with app.app_context():
         # Check if the 'book' table exists, and create it if not
-        # if not db.engine.dialect.has_table(db.engine, 'books'):
-        #     db.create_all()
+        #if not db.engine.dialect.has_table(db.engine, 'books'):
+        #    db.create_all()
 
         # Add sample data to the 'books' table
         for book_data in books:
