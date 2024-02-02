@@ -1,5 +1,4 @@
-version: '3'
-
+version: '3.8'
 services:
   flask-api:
     container_name: flask-api
@@ -24,5 +23,17 @@ services:
       - "5432:5432"
     # volumes:
     #   - postgres-data:/var/lib/postgresql/data
+
+  ui:
+    container_name: ui
+    build:
+      context: ./ui  # Path to your UI directory containing Dockerfile and static files
+      dockerfile: Dockerfile  # Assuming you have a Dockerfile in the ./ui directory
+    ports:
+      - "8080:80"  # Expose UI on port 8080
+    depends_on:
+      - flask-api  # Optional: UI might depend on the API being available
+
+# Uncomment if you need persistent storage for PostgreSQL
 # volumes:
-#   postgres-data:  
+#   postgres-data:

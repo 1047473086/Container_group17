@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS #Added for CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import UserMixin
@@ -75,18 +76,28 @@ def login():
     #  you should validate and hash passwords.
     username = request.json.get('username')
     password = request.json.get('password')
-    user = User.query.filter_by(username=username, password=password).first()
-    if user:
+    # Assuming passwords are hashed, you'd compare the hashed password here.
+    # For simplicity, this example will not include password hashing.
+    user = User.query.filter_by(username=username).first()
+    
+    if user and user.check_password(password):  # Assuming a method to check hashed passwords
         login_user(user)
-        return jsonify({'message': 'Logged in successfully.'})
-    return jsonify({'error': 'Invalid credentials'}), 401
-
+        return jsonify({'message':'logged in Sucessfully'})
+        # Redirect based on user role
+    #     if user.role == 'manager':
+    #         return jsonify({'redirect': '/manager_dashboard'}), 200  # Redirect to manager dashboard
+    #     elif user.role == 'staff':
+    #         return  jsonify({'redirect': '/staff_dashboard'}), 200  # Redirect to staff dashboard
+    #     else:  # Default user role
+    #         return jsonify({'redirect': '/user_dashboard'}), 200  # Redirect to general user dashboard
+    else:
+        return jsonify({'error': 'Invalid credentials'}), 401
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     return jsonify({'message': 'Logged out successfully.'})
-@app.route('/inventory/api/v1.0/books', methods=['POST'])
+@app.route('/login', methods=['POST'])
 
 @app.route('/inventory/api/v1.0/books', methods=['POST'])
 @login_required
@@ -106,7 +117,11 @@ def add_or_update_book():
     db.session.commit()
     return jsonify({'message': 'Book added/updated successfully'}), 200
 
+#app = Flask(__name__)
+CORS(app)  # This will enable CORS for all routes and methods
+
 if __name__ == '__main__':
     
     app.run(debug=True, host='0.0.0.0')
+
 
