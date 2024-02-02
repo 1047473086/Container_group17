@@ -81,16 +81,17 @@ def login():
     # For simplicity, this example will not include password hashing.
     user = User.query.filter_by(username=username).first()
     
-    if user and user.check_password(password):  # Assuming a method to check hashed passwords
-        login_user(user)
-        #return jsonify({'message':'logged in Sucessfully'})
-        # Redirect based on user role
-        if user.role == 'manager':
-            return jsonify({'redirect': '/manager_dashboard'}), 200  # Redirect to manager dashboard
-        elif user.role == 'staff':
-            return  jsonify({'redirect': '/staff_dashboard'}), 200  # Redirect to staff dashboard
-        else:  # Default user role
-            return jsonify({'redirect': '/user_dashboard'}), 200  # Redirect to general user dashboard
+    if user:  # Assuming a method to check hashed passwords
+        if user.password == password:
+            login_user(user)
+            #return jsonify({'message':'logged in Sucessfully'})
+            # Redirect based on user role
+            if user.role == 'manager':
+                return jsonify({'redirect': '/manager_dashboard'}), 200  # Redirect to manager dashboard
+            elif user.role == 'staff':
+                return  jsonify({'redirect': '/staff_dashboard'}), 200  # Redirect to staff dashboard
+            else:  # Default user role
+                return jsonify({'redirect': '/user_dashboard'}), 200  # Redirect to general user dashboard
     else:
         return jsonify({'error': 'Invalid credentials'}), 401
 @app.route('/logout')
