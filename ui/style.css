@@ -1,3 +1,45 @@
 body { font-family: Arial, sans-serif; }
-#login-section, #books-section { margin: 20px; }
+/*#login-section, #books-section { margin: 20px; }*/
+/* General styling for the login section */
+#login-section {
+    max-width: 300px; /* Limit the width of the login section */
+    margin: 100px auto; /* Center the login section vertically and horizontally */
+    padding: 20px; /* Add some padding inside the login section */
+    border-radius: 10px; /* Rounded corners for the login section */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    background-color: #f9f9f9; /* Light background color */
+    display: flex;
+    flex-direction: column; /* Stack the inputs and button vertically */
+    align-items: center; /* Align items in the center */
+    gap: 10px; /* Create a gap between elements */
+}
+
+/* Styling for the input fields */
+#login-section input[type="text"],
+#login-section input[type="password"] {
+    width: 100%; /* Make input fields take up the full width of the login-section */
+    padding: 10px; /* Add padding inside the input fields for better readability */
+    margin: 5px 0; /* Add some margin for spacing between the inputs */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 5px; /* Rounded corners for the inputs */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Styling for the login button */
+#login-section button {
+    width: 100%; /* Make the button take up the full width of the login-section */
+    padding: 10px; /* Add padding for a larger click area */
+    border: none; /* Remove the default border */
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color */
+    font-weight: bold; /* Make the text bold */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Change the mouse cursor to indicate it's clickable */
+    transition: background-color 0.3s ease; /* Smooth transition for button hover effect */
+}
+
+#login-section button:hover {
+    background-color: #0056b3; /* Darken the button on hover for visual feedback */
+}
+
 input, button { margin: 5px; }
