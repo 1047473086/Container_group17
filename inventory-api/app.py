@@ -7,6 +7,7 @@ from flask_login import login_user, logout_user, login_required
 from flask import request
 from functools import wraps
 from flask_login import current_user
+
 app = Flask(__name__)
 
 # Set your PostgreSQL connection details
@@ -79,19 +80,21 @@ def login():
     # Assuming passwords are hashed, you'd compare the hashed password here.
     # For simplicity, this example will not include password hashing.
     user = User.query.filter_by(username=username).first()
-    
-    if user and user.check_password(password):  # Assuming a method to check hashed passwords
-        login_user(user)
-        return jsonify({'message':'logged in Sucessfully'})
-        # Redirect based on user role
-    #     if user.role == 'manager':
-    #         return jsonify({'redirect': '/manager_dashboard'}), 200  # Redirect to manager dashboard
-    #     elif user.role == 'staff':
-    #         return  jsonify({'redirect': '/staff_dashboard'}), 200  # Redirect to staff dashboard
-    #     else:  # Default user role
-    #         return jsonify({'redirect': '/user_dashboard'}), 200  # Redirect to general user dashboard
-    else:
-        return jsonify({'error': 'Invalid credentials'}), 401
+    print(f"Username: {username}, Password: {password}, User: {user}")
+    if user:
+        print(f"User found: {user.username}")
+        if user.password == password:
+            login_user(user)
+            # return jsonify({'message':'logged in Sucessfully'})
+            # Redirect based on user role
+            if user.role == 'manager':
+                return jsonify({'redirect': '/manager_dashboard'}), 200  # Redirect to manager dashboard
+            elif user.role == 'staff':
+                return  jsonify({'redirect': '/staff_dashboard'}), 200  # Redirect to staff dashboard
+            else:  # Default user role
+                return jsonify({'redirect': '/user_dashboard'}), 200  # Redirect to general user dashboard
+        else:
+            return jsonify({'error': 'Invalid credentials'}), 401
 @app.route('/logout')
 @login_required
 def logout():

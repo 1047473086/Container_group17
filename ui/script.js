@@ -7,8 +7,15 @@ function login() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log("aaaaa");
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log(data);
         if (data.redirect) {
             document.getElementById('login-section').style.display = 'none';
             document.getElementById('books-section').style.display = 'block';
