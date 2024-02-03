@@ -99,7 +99,7 @@ function addbook() {
     };
 
     // Make the POST request to the Flask API
-    fetch('/inventory/api/v1.0/books', {
+    fetch('http://localhost:5000/inventory/api/v1.0/books', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
