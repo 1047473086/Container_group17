@@ -88,7 +88,7 @@ def login():
             #return jsonify({'message':'logged in Sucessfully'})
             # Redirect based on user role
             if user.role == 'manager':
-                return jsonify({'redirect': '/manager_dashboard'}), 200  # Redirect to manager dashboard
+                return jsonify({'redirect': '/admin_dashboard'}), 200  # Redirect to manager dashboard
             elif user.role == 'staff':
                 return  jsonify({'redirect': '/staff_dashboard'}), 200  # Redirect to staff dashboard
             else:  # Default user role
