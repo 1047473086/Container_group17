@@ -87,13 +87,15 @@ function addbook() {
     // Get values from the form
     var bookName = document.getElementById('book-name').value;
     var bookAuthor = document.getElementById('book-author').value;
-    var bookPrice = document.getElementById('book-price').value;
+    var bookGenre = document.getElementById('book-genre').value;
+    var bookQuantity = document.getElementById('book-quantity').value;
 
     // Create the book object
     var bookData = {
         title: bookName,
         author: bookAuthor,
-        price: bookPrice // Assuming you want to store the price as well
+        genre: bookGenre,
+        quantity: bookQuantity 
     };
 
     // Make the POST request to the Flask API
@@ -109,7 +111,12 @@ function addbook() {
     .then(data => {
         console.log(data);
         // Handle the response data
-        // For example, you could clear the form fields or give user feedback
+        alert('Book added successfully!');
+        // Optionally, you could clear the form fields here if desired
+        document.getElementById('book-name').value = '';
+        document.getElementById('book-author').value = '';
+        document.getElementById('book-genre').value = '';
+        document.getElementById('book-quantity').value = 0;
     })
     .catch((error) => {
         console.error('Error:', error);

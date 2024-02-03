@@ -122,6 +122,8 @@ def login():
 #     return jsonify({'message': 'Book added/updated successfully'}), 200
     
 @app.route('/inventory/api/v1.0/books', methods=['POST'])
+@login_required
+@role_required('manager')
 def add_or_update_book():
     data = request.json
     book = Book.query.filter_by(title=data['title']).first()
