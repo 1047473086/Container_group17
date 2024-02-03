@@ -74,16 +74,11 @@ function fetchBooksStaff() {
     });
 }
 
-function logoutt() {
-    // Clear stored credentials
-
-    // localStorage.removeItem('access_token');
-
-    // localStorage.removeItem('refresh_token');
-
-
-    // Redirect to the login page
+function logout() {
     console.log("logout");
-    window.location.href = '/login';
+    document.getElementById('login-section').style.display = 'block';
+    document.getElementById('books-section').style.display = 'none';
+    document.getElementById('staff-section').style.display = 'none';
+    document.getElementById('manager-section').style.display = 'none';
 }
 
