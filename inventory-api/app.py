@@ -103,9 +103,25 @@ def login():
 #     return jsonify({'message': 'Logged out successfully.'})
 #@app.route('/login', methods=['POST'])
 
+# @app.route('/inventory/api/v1.0/books', methods=['POST'])
+# @login_required
+# @role_required('manager')
+# def add_or_update_book():
+#     data = request.json
+#     book = Book.query.filter_by(title=data['title']).first()
+#     if book:
+#         # Update existing book
+#         book.author = data.get('author', book.author)
+#         book.genre = data.get('genre', book.genre)
+#         book.quantity = data.get('quantity', book.quantity)
+#     else:
+#         # Add new book
+#         book = Book(title=data['title'], author=data['author'], genre=data['genre'], quantity=data['quantity'])
+#         db.session.add(book)
+#     db.session.commit()
+#     return jsonify({'message': 'Book added/updated successfully'}), 200
+    
 @app.route('/inventory/api/v1.0/books', methods=['POST'])
-@login_required
-@role_required('manager')
 def add_or_update_book():
     data = request.json
     book = Book.query.filter_by(title=data['title']).first()
@@ -116,10 +132,11 @@ def add_or_update_book():
         book.quantity = data.get('quantity', book.quantity)
     else:
         # Add new book
-        book = Book(title=data['title'], author=data['author'], genre=data['genre'], quantity=data['quantity'])
-        db.session.add(book)
+        new_book = Book(title=data['title'], author=data['author'], genre=data.get('genre', ''), quantity=data.get('quantity', 1))
+        db.session.add(new_book)
     db.session.commit()
     return jsonify({'message': 'Book added/updated successfully'}), 200
+
 
 #app = Flask(__name__)
 #CORS(appCORS(app, supports_credentials=True))  # This will enable CORS for all routes and methods

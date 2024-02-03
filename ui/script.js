@@ -87,3 +87,37 @@ function logoutt() {
     window.location.href = '/login';
 }
 
+
+function addbook() {
+    // Get values from the form
+    var bookName = document.getElementById('book-name').value;
+    var bookAuthor = document.getElementById('book-author').value;
+    var bookPrice = document.getElementById('book-price').value;
+
+    // Create the book object
+    var bookData = {
+        title: bookName,
+        author: bookAuthor,
+        price: bookPrice // Assuming you want to store the price as well
+    };
+
+    // Make the POST request to the Flask API
+    fetch('/inventory/api/v1.0/books', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(bookData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        // Handle the response data
+        // For example, you could clear the form fields or give user feedback
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
