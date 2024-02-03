@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script src="script.js"></script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +13,11 @@
         <input type="password" id="password" placeholder="Password">
         <button onclick="login()">Login</button>
     </div>
+    
+    <div id="logout-section">
+        <button onclick="logoutt()">Logout</button>
+    </div>
+    
     <div id="books-section" style="display:none;">
         <h2>Books</h2>
         <ul id="books-list"></ul>
@@ -26,9 +32,8 @@
         <input type="text" id="book-name" placeholder="Book Name">
         <input type="text" id="book-author" placeholder="Author">
         <input type="text" id="book-price" placeholder="Price">
-        <button onclick="addBook()">Add Book</button>
+        <button onclick="">Add Book</button>
     </div>
     
-    <script src="script.js"></script>
 </body>
 </html>

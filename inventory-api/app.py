@@ -9,6 +9,7 @@ from functools import wraps
 from flask_login import current_user
 
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 # Set your PostgreSQL connection details
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@postgres-db:5432/postgres'
@@ -94,12 +95,13 @@ def login():
                 return jsonify({'redirect': '/user_dashboard'}), 200  # Redirect to general user dashboard
     else:
         return jsonify({'error': 'Invalid credentials'}), 401
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return jsonify({'message': 'Logged out successfully.'})
-@app.route('/login', methods=['POST'])
+# @app.route('/logout')
+# @login_required
+# def logout():
+#     print(f"Logging out user: {current_user.username}")
+#     logout_user()
+#     return jsonify({'message': 'Logged out successfully.'})
+#@app.route('/login', methods=['POST'])
 
 @app.route('/inventory/api/v1.0/books', methods=['POST'])
 @login_required
@@ -120,7 +122,7 @@ def add_or_update_book():
     return jsonify({'message': 'Book added/updated successfully'}), 200
 
 #app = Flask(__name__)
-CORS(app)  # This will enable CORS for all routes and methods
+#CORS(appCORS(app, supports_credentials=True))  # This will enable CORS for all routes and methods
 
 if __name__ == '__main__':
     

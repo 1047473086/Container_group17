@@ -15,10 +15,10 @@ books = [
 ]
 #roles = ['manager', 'staff', 'customer']
 users = [
-    {'username': 'manager_user', 'password': 'manager_pass', 'role': 'manager'},
-    {'username': 'staff_user1', 'password': 'staff_pass1', 'role': 'staff'},
+    {'username': 'm1', 'password': 'm1', 'role': 'manager'},
+    {'username': 's1', 'password': 's1', 'role': 'staff'},
     {'username': 'staff_user2', 'password': 'staff_pass2', 'role': 'staff'},
-    {'username': 'customer_user1', 'password': 'customer_pass1', 'role': 'customer'},
+    {'username': 'c1', 'password': 'c1', 'role': 'customer'},
     {'username': 'customer_user2', 'password': 'customer_pass2', 'role': 'customer'},
     {'username': 'customer_user3', 'password': 'customer_pass3', 'role': 'customer'},
     {'username': 'customer_user4', 'password': 'customer_pass4', 'role': 'customer'},

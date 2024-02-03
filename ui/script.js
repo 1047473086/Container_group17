@@ -19,18 +19,21 @@ function login() {
         if (data.redirect == "/user_dashboard") {
             console.log("user");
             document.getElementById('login-section').style.display = 'none';
+            document.getElementById('logout-section').style.display = 'block';
             document.getElementById('books-section').style.display = 'block';
             fetchBooks();
         }
         else if (data.redirect == "/admin_dashboard") {
             console.log("admin");
             document.getElementById('login-section').style.display = 'none';
+            document.getElementById('logout-section').style.display = 'block';
             document.getElementById('admin-section').style.display = 'block';
             fetchBooks();
         } 
         else if (data.redirect == "/staff_dashboard") {
             console.log("staff");
             document.getElementById('login-section').style.display = 'none';
+            document.getElementById('logout-section').style.display = 'block';
             document.getElementById('staff-section').style.display = 'block';
             fetchBooksStaff();            
         }
@@ -69,5 +72,18 @@ function fetchBooksStaff() {
         });
         console.log(booksList);
     });
+}
+
+function logoutt() {
+    // Clear stored credentials
+
+    // localStorage.removeItem('access_token');
+
+    // localStorage.removeItem('refresh_token');
+
+
+    // Redirect to the login page
+    console.log("logout");
+    window.location.href = '/login';
 }
 
