@@ -71,7 +71,7 @@ These Kubernetes artifacts dictate how the application is deployed, managed, and
 
 **Commands to run the application**
 
-<br>- Deploy the application for the first time:
+ - Deploy the application for the first time:
 <br>  `helm install my-release ./docker-compose`
   
 - Scale the application horizontally:
