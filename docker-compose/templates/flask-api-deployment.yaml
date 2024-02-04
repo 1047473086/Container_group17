@@ -27,12 +27,18 @@ spec:
       - env:
         - name: DB_URL
           value: postgresql://postgres:postgres@postgres-db:5432/postgres
-        image: flask-api:1.0
-        imagePullPolicy: ""
+        image: 1047473086961/api:1.0
+        imagePullPolicy: IfNotPresent
         name: flask-api
         ports:
         - containerPort: 5000
-        resources: {}
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
       restartPolicy: Always
       serviceAccountName: ""
       volumes: null

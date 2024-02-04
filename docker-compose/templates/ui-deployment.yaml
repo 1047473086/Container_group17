@@ -24,8 +24,8 @@ spec:
         io.kompose.service: ui
     spec:
       containers:
-      - image: ui:1.0
-        imagePullPolicy: ""
+      - image: 1047473086961/ui:1.0
+        imagePullPolicy: IfNotPresent
         name: ui
         ports:
         - containerPort: 80

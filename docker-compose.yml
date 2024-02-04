@@ -1,4 +1,4 @@
-version: '3.0'
+version: '3.8'
 services:
   flask-api:
     image: flask-api:1.0
@@ -22,8 +22,8 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
+    # volumes:
+    #   - postgres-data:/var/lib/postgresql/data
 
   ui:
     image: ui:1.0  
@@ -37,5 +37,5 @@ services:
       - flask-api  # Optional: UI might depend on the API being available
 
 # Uncomment if you need persistent storage for PostgreSQL
-volumes:
-  postgres-data:
+# volumes:
+#   postgres-data:
