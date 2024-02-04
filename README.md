@@ -70,28 +70,28 @@ The Helm chart and its associated YAML files are the artifacts created to deploy
 These Kubernetes artifacts dictate how the application is deployed, managed, and scaled within a Kubernetes cluster, ensuring high availability and resilience.
 
 - Deploy the application for the first time:
-  `helm install my-release ./docker-compose`
+<br>  `helm install my-release ./docker-compose`
   
 - Scale the application horizontally:
-  `kubectl scale deployment.apps/flask-api --replicas=4`
+ <br> `kubectl scale deployment.apps/flask-api --replicas=4`
   
 - Uninstall the application:
-  `helm uninstall my-release`
+<br>  `helm uninstall my-release`
   
 - Upgrade and publish new container images:
-  `docker build -t 1047473086961/ui:latest .`
-   `docker push 1047473086961/ui:latest`
+<br>  `docker build -t 1047473086961/ui:latest .`
+<br>   `docker push 1047473086961/ui:latest`
   
 - Rollout :
-  `kubectl set image deployment.apps/ui ui=1047473086961/ui:latest`
-  ` kubectl rollout status deployment.apps/ui`
+<br>  `kubectl set image deployment.apps/ui ui=1047473086961/ui:latest`
+<br>  ` kubectl rollout status deployment.apps/ui`
   
 - Canary deployment :
-  `kubectl create deployment ui-canary --image=1047473086961/ui:latest `
-  `kubectl scale deployment.apps/ui --replicas=0 `
-  ` kubectl rollout status deployment.apps/ui-canary `
-  `kubectl set image deployment.apps/ui ui=1047473086961/ui:latest ;
-  `kubectl delete deployment.apps/ui-canary`
+ <br> `kubectl create deployment ui-canary --image=1047473086961/ui:latest `
+<br>  `kubectl scale deployment.apps/ui --replicas=0 `
+<br>  ` kubectl rollout status deployment.apps/ui-canary `
+<br>  `kubectl set image deployment.apps/ui ui=1047473086961/ui:latest `
+<br>  `kubectl delete deployment.apps/ui-canary`
 
 
 **Conclusion**
