@@ -79,19 +79,19 @@ These Kubernetes artifacts dictate how the application is deployed, managed, and
   `helm uninstall my-release`
   
 - Upgrade and publish new container images:
-  `docker build -t 1047473086961/ui:latest .
-  ; docker push 1047473086961/ui:latest`
+  `docker build -t 1047473086961/ui:latest .`
+   `docker push 1047473086961/ui:latest`
   
 - Rollout :
-  `kubectl set image deployment.apps/ui ui=1047473086961/ui:latest
-  ; kubectl rollout status deployment.apps/ui`
+  `kubectl set image deployment.apps/ui ui=1047473086961/ui:latest`
+  ` kubectl rollout status deployment.apps/ui`
   
-- Canary deployment i:
-  `kubectl create deployment ui-canary --image=1047473086961/ui:latest ;
-  kubectl scale deployment.apps/ui --replicas=0 ;
-   kubectl rollout status deployment.apps/ui-canary ;
-  kubectl set image deployment.apps/ui ui=1047473086961/ui:latest ;
-  kubectl delete deployment.apps/ui-canary`
+- Canary deployment :
+  `kubectl create deployment ui-canary --image=1047473086961/ui:latest `
+  `kubectl scale deployment.apps/ui --replicas=0 `
+  ` kubectl rollout status deployment.apps/ui-canary `
+  `kubectl set image deployment.apps/ui ui=1047473086961/ui:latest ;
+  `kubectl delete deployment.apps/ui-canary`
 
 
 **Conclusion**
