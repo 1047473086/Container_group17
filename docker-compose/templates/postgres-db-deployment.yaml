@@ -18,11 +18,10 @@ spec:
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: postgres-config
           env:
-            - name: POSTGRES_DB
-              value: postgres
-            - name: POSTGRES_USER
-              value: postgres
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -35,24 +34,3 @@ spec:
         - name: postgredb
           persistentVolumeClaim:
             claimName: postgres-pv-claim
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: postgres-pv-claim
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: standard # Specify the storage class here
-  resources:
-    requests:
-      storage: 1Gi # Adjust the size as per your requirement
-
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: postgres-secret
-type: Opaque
-data:
-  POSTGRES_PASSWORD: cG9zdGdyZXM= # base64 encoded "postgres"
