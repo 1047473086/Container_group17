@@ -45,9 +45,9 @@ These roles are enforced within the Flask API logic using decorators that restri
 To build the Docker images for the application, several Dockerfiles and associated files are utilized:
 
 1. Flask API Dockerfile: This Dockerfile starts with a Python 3.7 Alpine image, sets the working directory, installs dependencies
-2.  from a `requirements.txt` file, exposes port 5000, and specifies the command to run the Flask application.
-3. UI Dockerfile: This Dockerfile uses the Nginx Alpine image as a base, copies the UI files into the Nginx HTML directory, and exposes port 80.
-4. `requirements.txt`: Lists all Python packages required by the Flask API.
+  from a `requirements.txt` file, exposes port 5000, and specifies the command to run the Flask application.
+2. UI Dockerfile: This Dockerfile uses the Nginx Alpine image as a base, copies the UI files into the Nginx HTML directory, and exposes port 80.
+ `requirements.txt`: Lists all Python packages required by the Flask API.
 
 These Docker artifacts ensure that each component of the application is isolated, consistent, and portable across different environments.
 
