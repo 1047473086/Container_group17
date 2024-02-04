@@ -69,6 +69,29 @@ The Helm chart and its associated YAML files are the artifacts created to deploy
 12. web-app-tls-secret.yaml: Contains the TLS certificates for securing HTTPS traffic to the web application.
 These Kubernetes artifacts dictate how the application is deployed, managed, and scaled within a Kubernetes cluster, ensuring high availability and resilience.
 
+**Commands to run**
+deploy the application for the first time:
+helm install my-release ./docker-compose
+
+scale the application horizontally:
+kubectl scale deployment.apps/flask-api --replicas=4
+
+uninstall the application:
+helm uninstall my-release
+
+Upgrade:
+build the container images and publish to a registry:
+docker build -t 1047473086961/ui:latest .
+docker push 1047473086961/ui:latest
+Rollout:
+kubectl set image deployment.apps/ui ui=1047473086961/ui:latest
+kubectl rollout status deployment.apps/ui
+Canary:
+kubectl create deployment ui-canary --image=1047473086961/ui:latest
+kubectl scale deployment.apps/ui --replicas=0
+kubectl rollout status deployment.apps/ui-canary
+kubectl set image deployment.apps/ui ui=1047473086961/ui:latest
+kubectl delete deployment.apps/ui-canary
 
 **Conclusion**
 
