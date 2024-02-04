@@ -66,7 +66,7 @@ The Helm chart and its associated YAML files are the artifacts created to deploy
 These Kubernetes artifacts dictate how the application is deployed, managed, and scaled within a Kubernetes cluster, ensuring high availability and resilience.
 
 
-#**Conclusion**
+**Conclusion**
 
 The book inventory application is a robust system designed with modern architecture principles. 
 It leverages containerization for deployment consistency and Kubernetes for orchestration. 
