@@ -56,12 +56,11 @@ These Docker artifacts ensure that each component of the application is isolated
 The Helm chart and its associated YAML files are the artifacts created to deploy the application to Kubernetes:
 
 1. `flask-api-deployment.yaml`: Defines the desired state for the Flask API pods, including the Docker image to use,
-2. the number of replicas, and configuration like environment variables.
-3. `flask-api-service.yaml`: Exposes the Flask API deployment as a service within the Kubernetes cluster to make it accessible.
-4. `postgres-db-deployment.yaml` and `postgres-db-service.yaml`: Define the deployment and service for the PostgreSQL database.
-5. `ui-deployment.yaml` and `ui-service.yaml`: Define the deployment and service for the UI component.
-6. `postgres-data-persistentvolumeclaim.yaml`: Defines the persistent volume claim for the PostgreSQL database to ensure data is retained across pod restarts.
-7. `Chart.yaml`: Provides metadata about the Helm chart itself.
+ the number of replicas, and configuration like environment variables.
+2. `flask-api-service.yaml`: Exposes the Flask API deployment as a service within the Kubernetes cluster to make it accessible.
+3. `postgres-db-deployment.yaml` and `postgres-db-service.yaml`: Define the deployment and service for the PostgreSQL database.
+4. `ui-deployment.yaml` and `ui-service.yaml`: Define the deployment and service for the UI component.
+5. `Chart.yaml`: Provides metadata about the Helm chart itself.
 
 These Kubernetes artifacts dictate how the application is deployed, managed, and scaled within a Kubernetes cluster, ensuring high availability and resilience.
 
