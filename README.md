@@ -55,13 +55,18 @@ These Docker artifacts ensure that each component of the application is isolated
 
 The Helm chart and its associated YAML files are the artifacts created to deploy the application to Kubernetes:
 
-1. `flask-api-deployment.yaml`: Defines the desired state for the Flask API pods, including the Docker image to use,
- the number of replicas, and configuration like environment variables.
-2. `flask-api-service.yaml`: Exposes the Flask API deployment as a service within the Kubernetes cluster to make it accessible.
-3. `postgres-db-deployment.yaml` and `postgres-db-service.yaml`: Define the deployment and service for the PostgreSQL database.
-4. `ui-deployment.yaml` and `ui-service.yaml`: Define the deployment and service for the UI component.
-5. `Chart.yaml`: Provides metadata about the Helm chart itself.
-
+flask-api-deployment.yaml: Defines the desired state for the Flask API application's pods and replicas in the Kubernetes cluster.
+flask-api-ingress.yaml: Specifies the ingress rules for routing external HTTP traffic to the Flask API services.
+flask-api-service.yaml: Creates a service that provides a stable endpoint for accessing the Flask API pods.
+network-policy.yaml: Applies rules to control the flow of traffic between pods or namespaces within the Kubernetes cluster.
+postgres-db-config.yaml: Contains configuration data for the PostgreSQL database that can be consumed by pods.
+postgres-db-deployment.yaml: Sets up the desired state for the PostgreSQL database pods, including the number of replicas.
+postgres-db-secret.yaml: Stores sensitive information, such as passwords or tokens, used by the PostgreSQL database in a secure way.
+postgres-db-service.yaml: Provides a consistent endpoint for the pods to connect to the PostgreSQL database service.
+postgres-db-storage.yaml: Configures persistent storage options for the PostgreSQL database to ensure data persists across pod restarts.
+ui-deployment.yaml: Manages the deployment of the user interface application within the Kubernetes cluster.
+ui-service.yaml: Establishes a service to access the user interface pods consistently.
+web-app-tls-secret.yaml: Contains the TLS certificates for securing HTTPS traffic to the web application.
 These Kubernetes artifacts dictate how the application is deployed, managed, and scaled within a Kubernetes cluster, ensuring high availability and resilience.
 
 
